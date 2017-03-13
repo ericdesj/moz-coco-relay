@@ -1,0 +1,11 @@
+{
+  "name": "moz-coco-relay",
+  "version": "1.0.0",
+  "description": "Relay service to access Mozilla DXR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eric Desjardins",
+  "license": "MPL-2.0"
+}
