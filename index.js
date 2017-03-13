@@ -3,6 +3,11 @@ let request = require("request");
 
 let app = express();
 
+
+app.get('/', function(req, res) {
+    res.send("hg Mozilla relay service");
+});
+
 app.get('/mozilla_dxr/', function(req, res) {
 
     let hgBranch = req.query.branch;
@@ -20,4 +25,4 @@ app.get('/mozilla_dxr/', function(req, res) {
     // res.send("tagId is set to " + req.query.tagId);
 })
 
-app.listen(5000);
+app.listen(process.env.PORT || 5000);
