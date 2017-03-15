@@ -7,7 +7,7 @@ mozilla_dxr?branch={BRANCH}&revision={REVSION}&path={path}
 #### Make a request
 You will need the following information from Mozilla hg: branch, revision and full path.
 
-Query format: `mozilla_dxr?branch={BRANCH}revision={REVSION}path={path}`
+Query format: `mozilla_dxr?branch={BRANCH}?revision={REVSION}?path={path}`
 
 #### Example:
 * https://still-scrubland-32510.herokuapp.com/mozilla_hg_example
