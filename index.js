@@ -32,7 +32,6 @@ app.get('/mozilla_hg/', function(req, res) {
         let $ = cheerio.load(body);
         let code = $('div.page_body');
         res.send(code.html());
-        res.send(body);
     });
 })
 
