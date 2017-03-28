@@ -53,13 +53,13 @@ app.get('/mozilla_hg_example/', function(req, res) {
     request(uri, function(error, response, body) {
         let $ = cheerio.load(body);
         let code = $('div.page_body');
-        $('<link rel="stylesheet" type="text/css" href="stylesheets/style.css">').insertBefore('.sourcelines');
+        $('<link rel="stylesheet" type="text/css" href="stylesheets/hgStyle.css">').insertBefore('.sourcelines');
         res.send(code.html());
     });
 });
 
 // https://dxr.mozilla.org/mozilla-central/rev/9577ddeaafd85554c2a855f385a87472a089d5c0/browser/components/downloads/test/unit/head.js
-// ?branch=mozilla-central&revision=e03e0c60462c&path=browser/components/downloads/test/unit/head.js
+// /mozilla_dxr/?branch=mozilla-central&revision=e03e0c60462c&path=browser/components/downloads/test/unit/head.js
 
 /**
  * Get the formatted file from the dxr repository
