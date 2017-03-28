@@ -3,7 +3,7 @@ let request = require("request");
 let cheerio = require('cheerio');
 
 let app = express();
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/'));
 
 app.get('/', function(req, res) {
     res.send("hg Mozilla relay service");
@@ -43,6 +43,9 @@ app.get('/mozilla_hg/', function(req, res) {
     });
 });
 
+/**
+ * Example of the formatted hg code with css syntax highlight
+ */
 app.get('/mozilla_hg_example/', function(req, res) {
     let hgBranch = req.query.branch;
     let hgRevision = req.query.revision;
@@ -58,8 +61,25 @@ app.get('/mozilla_hg_example/', function(req, res) {
     });
 });
 
-// https://dxr.mozilla.org/mozilla-central/rev/9577ddeaafd85554c2a855f385a87472a089d5c0/browser/components/downloads/test/unit/head.js
-// /mozilla_dxr/?branch=mozilla-central&revision=e03e0c60462c&path=browser/components/downloads/test/unit/head.js
+/**
+ * Get the formatted file from the dxr repository.
+ *
+ * Issue #1: For raw source code, dxr points to hg which is problematic when we are looking for generated files
+ *
+ */
+// app.get('/mozilla_dxr_raw/', function(req, res) {
+//     let dxrBranch = req.query.branch;
+//     let dxrRevision = req.query.revision;
+//     let dxrPath = req.query.path;
+//     let uri = `https://hg.mozilla.org/${dxrBranch}/raw-file/${dxrRevision}/${dxrPath}`;
+//
+//     // mozilla_dxr/?branch={BRANCH}&revision={REVSION}&path={path}
+//     request(uri, function(error, response, body) {
+//         let $ = cheerio.load(body);
+//         let code = $('div.content');
+//         res.send(code.html());
+//     });
+// });
 
 /**
  * Get the formatted file from the dxr repository
@@ -70,12 +90,30 @@ app.get('/mozilla_dxr/', function(req, res) {
     let dxrRevision = req.query.revision;
     let dxrPath = req.query.path;
     let uri = `https://dxr.mozilla.org/${dxrBranch}/rev/${dxrRevision}/${dxrPath}`;
-    // let uri = `https://dxr.mozilla.org/mozilla-central/rev/9577ddeaafd85554c2a855f385a87472a089d5c0/browser/components/downloads/test/unit/head.js`;
 
     // mozilla_dxr/?branch={BRANCH}&revision={REVSION}&path={path}
     request(uri, function(error, response, body) {
         let $ = cheerio.load(body);
         let code = $('div.content');
+        res.send(code.html());
+    });
+});
+
+/**
+ * Example of the formatted dxr code with css syntax highlight
+ *
+ */
+app.get('/mozilla_dxr_example/', function(req, res) {
+    let dxrBranch = req.query.branch;
+    let dxrRevision = req.query.revision;
+    let dxrPath = req.query.path;
+    let uri = `https://dxr.mozilla.org/mozilla-central/rev/9577dde/browser/components/downloads/test/unit/head.js`;
+
+    // mozilla_dxr/?branch={BRANCH}&revision={REVSION}&path={path}
+    request(uri, function(error, response, body) {
+        let $ = cheerio.load(body);
+        let code = $('div.content');
+        $('<link rel="stylesheet" type="text/css" href="stylesheets/dxrStyle.css">').insertBefore('.bubble');
         res.send(code.html());
     });
 });
