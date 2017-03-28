@@ -1,6 +1,10 @@
 # Coco Relay
 
 Relay service for the Coco [tool](https://github.com/ericdesj/moz-codecover-ui).
+
+Deploy your own copy of _Coco Relay_ with Heroku.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
  
 mozilla_dxr?branch={BRANCH}&revision={REVSION}&path={path}
 
