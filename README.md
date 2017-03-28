@@ -6,8 +6,6 @@ Deploy your own copy of _Coco Relay_ with Heroku.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
  
-mozilla_dxr?branch={BRANCH}&revision={REVSION}&path={path}
-
 #### Make a request
 You will need the following information from Mozilla hg: branch, revision and full path.
 
