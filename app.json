@@ -1,0 +1,7 @@
+{
+  "name": "Coco hg/dxr",
+  "description": "A relay for the Mozilla Mercurial and dxr sites",
+  "repository": "https://github.com/ericdesj/moz-coco-relay",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "express"]
+}
